@@ -1,0 +1,4 @@
+const Users = require('../models/Users');
+
+
+module.exports = isAuthenticated;
