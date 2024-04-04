@@ -1,6 +1,5 @@
-require('dotenv').config();
-// creer un fichier .env et y mettre les variables
 const express = require('express');
+require('dotenv').config();
 const cors = require('cors');
 const app = express();
 const axios = require('axios');
@@ -76,7 +75,7 @@ app.get(`/character/:characterId`, async (req, res) => {
 
       res.json(response.data);
    } catch (error) {
-      res.status(404).json({ message: 'catch charac/charId' });
+      res.status(404).json({ message: error.message });
    }
 });
 
