@@ -8,7 +8,6 @@ const encBase64 = require('crypto-js/enc-base64');
 const Users = require('../models/Users');
 const isAuthenticated = require('../middleware/isAuthenticated');
 
-// **************SIGNUP***************
 router.post('/signup', async (req, res) => {
    try {
       const { email, password } = req.body;
@@ -34,7 +33,6 @@ router.post('/signup', async (req, res) => {
    }
 });
 
-// ********************LOGIN*****************
 router.post('/login', isAuthenticated, async (req, res) => {
    try {
       const { email, password } = req.body;

@@ -16,7 +16,7 @@ const Users = mongoose.model({
   token: String,
   hash: String,
   salt: String,
-  favorites: {
+  bookmarks: {
     characters: Array,
     comics: Array
   }
