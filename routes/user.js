@@ -6,7 +6,7 @@ const SHA256 = require('crypto-js/sha256');
 const encBase64 = require('crypto-js/enc-base64');
 
 const Users = require('../models/Users');
-const isAuthenticated = require('../middleware/isAuthenticated');
+// const isAuthenticated = require('../middleware/isAuthenticated');
 
 router.post('/signup', async (req, res) => {
    try {
