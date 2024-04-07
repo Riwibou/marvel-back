@@ -7,17 +7,16 @@ app.use(cors());
 
 app.get('/characters', async (req, res) => {
    try {
-
-      const limit = req.query.limit || '100';
-      const skip = req.query.skip || '0';
-      const name = req.query.name || '';
+      const page = req.query.page ? parseInt(req.query.page) : 1;
+      const limit = 100;
+      const skip = (page - 1) * limit;
 
       const response = await axios.get(
-         `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.API_KEY}&name=${name}&limit=${limit}&skip=${skip}`,
+         `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skip}`,
       );
       res.json(response.data);
    } catch (error) {
-      res.status(404).json({ message: error.message });
+      res.status(500).json({ message: error.message });
    }
 });
 
