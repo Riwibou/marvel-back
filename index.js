@@ -3,7 +3,10 @@ require('dotenv').config();
 const cors = require('cors');
 const app = express();
 const axios = require('axios');
+const router = require('./routes/user');
 app.use(cors());
+
+app.use(router)
 
 app.get('/characters', async (req, res) => {
    try {
@@ -21,14 +24,13 @@ app.get('/characters', async (req, res) => {
 });
 
 app.get('/comics', async (req, res) => {
-   try {
-
-      const limit = req.query.limit || '100';
-      const skip = req.query.skip || '0';
-      const title = req.query.title || '';
+  try {
+      const page = req.query.page ? parseInt(req.query.page) : 1;
+      const limit = 100;
+      const skip = (page - 1) * limit;
 
       const response = await axios.get(
-         `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.API_KEY}&title=${title}&limit=${limit}&skip=${skip}`,
+         `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skip}`,
       );
       res.json(response.data);
    } catch (error) {

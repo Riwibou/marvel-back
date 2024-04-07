@@ -1,16 +1,12 @@
 const mongoose = require('mongoose')
 
-const Users = mongoose.model({
+
+const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
     unique: true,
-    validate:
-      {
-        validator: isEmailValid,
-        message: 'Invalid email'
-      }
-     },
+  },
 
   password: {type: String, required: true},
   token: String,
@@ -22,8 +18,6 @@ const Users = mongoose.model({
   }
 })
 
-const isEmailValid = (email) => {
-  return /\S+@\S+\.\S+/.test(email)
-}
+const Users = mongoose.model('Users', userSchema)
 
 module.exports = Users
