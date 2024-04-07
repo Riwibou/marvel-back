@@ -8,14 +8,11 @@ const userSchema = new mongoose.Schema({
     unique: true,
   },
 
-  password: {type: String, required: true},
   token: String,
   hash: String,
   salt: String,
-  bookmarks: {
-    characters: Array,
-    comics: Array
-  }
+
+  
 })
 
 const Users = mongoose.model('Users', userSchema)

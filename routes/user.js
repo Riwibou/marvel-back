@@ -33,11 +33,11 @@ router.post('/signup', async (req, res) => {
    }
 });
 
-router.post('/login', isAuthenticated, async (req, res) => {
+router.post('/login', async (req, res) => {
    try {
       const { email, password } = req.body;
-
       const user = await Users.findOne({ email });
+      console.log("USER ==================================>", user);
       if (!user) {
          return res.status(404).json({ message: error.message });
       }
