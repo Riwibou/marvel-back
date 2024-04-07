@@ -95,10 +95,6 @@ app.get(`/character/:characterId`, async (req, res) => {
    }
 });
 
-app.all('*', (req, res) => {
-   res.status(404).json({ message: error.message });
-});
-
 app.listen(process.env.PORT, () => {
    console.log('WOOOOOOOOOHOOOOOUUUUU');
 });
